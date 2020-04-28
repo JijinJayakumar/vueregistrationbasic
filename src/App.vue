@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar color="deep-purple accent-4" :dense="true" dark max-height="50">
+      <v-toolbar-title>Demo </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+
+    <v-container>
+      <v-row justify="space-between">
+        <v-col cols="12" md="4">
+
+          <RegistrationForm v-on:formSuccess="response => {dataId=response}" />
+
+        </v-col>
+
+        <v-col cols="12" md="6" v-if="dataId!=0">
+
+          <DataView :url="`user/${this.dataId}`" />
+
+        </v-col>
+      </v-row>
+
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import DataView from "./components/DataView.vue"
+  import RegistrationForm from "./components/RegistrationForm.vue"
+  export default {
+    components: {
+      RegistrationForm,
+      DataView
+    },
+    data: () => ({
+      dataId: 0,
+    }),
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+
+
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
