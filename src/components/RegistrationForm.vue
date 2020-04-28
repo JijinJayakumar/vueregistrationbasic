@@ -134,7 +134,7 @@
                     if (!success) {
                         return;
                     }
-                    this.snackbar = true
+
                     this.isLoading = true
                     // this.form=await this.createFormData(this.form); enable to upload image as formdata file
                     HTTP.post('user', this.form).then((data) => {
@@ -142,7 +142,10 @@
                         this.dataId = data.data.id
                         this.$emit('formSuccess', data.data.id)
 
-                    }).then(() => this.isLoading = false)
+                    }).then(() => {
+                        this.isLoading = false
+                        this.snackbar = true
+                    })
 
                 })
             },
