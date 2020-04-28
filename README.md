@@ -1,5 +1,5 @@
 # test
-
+Live url  https://vueregistartionbasic.netlify.app/
 ## Project setup
 ```
 npm install
@@ -19,5 +19,3 @@ npm run build
 ```
 npm run lint
 ```
-
-
